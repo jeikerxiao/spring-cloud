@@ -210,7 +210,7 @@ spring:
 
 pom.xml
 
-```maven
+```xml
 <dependency>
 	<groupId>org.springframework.cloud</groupId>
 	<artifactId>spring-cloud-starter-eureka</artifactId>
@@ -244,7 +244,7 @@ spring:
 启动顺序：
 
 1. eureka-server (服务发现) 8881端口
-2. service-app (服务生产者) 8882端口（启动两个相同服务，不同端口）
+2. service-app (服务生产者) 8882端口（启动两个相同服务，使用不同端口，模拟分布式部署）
 3. service-app (服务生产者) 8883端口
 4. client-ribbon (服务消费者) 8884端口
 
