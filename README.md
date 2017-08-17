@@ -28,7 +28,7 @@ pom.xml
 
 application.yml配置文件
 
-```
+```yaml
 server:
   port: 8771
 
@@ -73,7 +73,7 @@ pom.xml
 application.yml配置文件
 
 
-```
+```yaml
 server:
   port: 8772
   
