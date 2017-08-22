@@ -1,0 +1,8 @@
+server:
+  port: 8883
+
+spring:
+  application:
+    name: service-app2
+  zipkin:
+    base-url: http://localhost:8881
