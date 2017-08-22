@@ -601,3 +601,135 @@ https://github.com/jeikerxiao/SpringCloudConfig/blob/master/respo/config-client-
 http://localhost:8881/hello?name=xiao
 
 ![image](images/config1.png)
+
+# 8. spring-cloud-config-eureka
+
+基于 spring-cloud-confg 项目，进行配置服务器集群化。
+
+项目分三个模块：
+
+1. eureka-server (服务注册与发现)
+2. config-server (配置服务器)
+3. config-client (配置客户端)
+
+
+## 8.1 eureka-server (服务注册与发现)
+pom.xml
+
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-eureka-server</artifactId>
+</dependency>
+```
+
+application.yml
+
+```yaml
+server:
+  port: 8881
+
+spring:
+  application:
+    name: eureka-server
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+```
+## 8.2 config-server (配置服务器)
+
+pom.xml
+
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-eureka</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-config-server</artifactId>
+</dependency>
+```
+
+application.yml
+
+```yaml
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jeikerxiao/SpringCloudConfig/
+          search-paths: respo
+          username:   # 公开仓库可不写用户名和密码，私有仓库需要写
+          password:
+      label: master
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8881/eureka/
+```
+## 8.3 config-client (配置客户端)
+
+pom.xml
+
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-eureka</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-config</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-web</artifactId>
+</dependency>
+```
+
+application.yml
+
+```yaml
+server:
+  port: 8882
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      label: master
+      profile: dev
+      discovery:
+        enabled: true
+        service-id: config-server
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8881/eureka/
+```
+
+## 8.4 测试
+
+http://localhost:8882/hello?name=xiao
+
+返回:
+
+```javascript
+{
+    "name": "xiao",
+    "message": "hello spring config"
+}
+```
