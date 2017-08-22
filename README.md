@@ -494,10 +494,10 @@ http://localhost:8886/api-b/hello?name=xiao&token=1
 
 在 spring-cloud-config 组件中，分两个角色:
 
-1. config server
-2. config client
+1. config server （服务器）
+2. config client （客户端）
 
-项目有三个模块：
+所以示例项目分两个模块：
 
 1. config-server (配置服务器)
 2. config-client (配置客户端)
