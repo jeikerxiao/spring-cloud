@@ -1,0 +1,21 @@
+server:
+  port: 8888
+
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jeikerxiao/SpringCloudConfig/
+          search-paths: respo
+          username:   # 公开仓库可不写用户名和密码，私有仓库需要写
+          password:
+      label: master
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8881/eureka/
