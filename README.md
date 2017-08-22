@@ -487,3 +487,117 @@ http://localhost:8886/api-a/hello?name=xiao&token=1
 http://localhost:8886/api-b/hello?name=xiao&token=1
 
 ![image](images/zuul2.png)
+
+# 7. spring-cloud-config
+
+在分布式系统中，由于服务数量巨多，为了方便服务配置文件统一管理，实时更新，所以需要分布式配置中心组件。
+
+在 spring-cloud-config 组件中，分两个角色:
+
+1. config server
+2. config client
+
+项目有三个模块：
+
+1. config-server (配置服务器)
+2. config-client (配置客户端)
+
+
+## 7.1 config-server (配置服务器)
+
+pom.xml
+
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-eureka</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-config-server</artifactId>
+</dependency>
+```
+
+application.yml
+
+```yaml
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jeikerxiao/SpringCloudConfig/
+          search-paths: respo
+          username:   # 公开仓库可不写用户名和密码，私有仓库需要写
+          password:
+      label: master
+```
+
+## 7.2 config-client (配置客户端)
+
+pom.xml
+
+```xml
+<dependency>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-starter-config</artifactId>
+</dependency>
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-starter-web</artifactId>
+</dependency>
+```
+
+application.yml
+
+```yaml
+server:
+  port: 8881
+
+spring:
+  application:
+    name: config-client
+  cloud:
+    config:
+      uri: http://localhost:8888/
+      label: master
+      profile: dev
+```
+
+HelloController.java
+
+```java
+@RestController
+public class HelloController {
+
+    @Value("${message}")
+    String message;
+
+    @GetMapping("/hello")
+    public Map<String, String> hello(@RequestParam String name) {
+        Map<String, String> result = new HashMap<>();
+        result.put("name", name);
+        result.put("message", message);
+        return result;
+    }
+
+}
+
+```
+
+## 7.3 Git仓库上的配置文件
+
+https://github.com/jeikerxiao/SpringCloudConfig/blob/master/respo/config-client-dev.properties
+
+![image](images/config2.png)
+
+## 7.4 测试
+
+http://localhost:8881/hello?name=xiao
+
+![image](images/config1.png)
