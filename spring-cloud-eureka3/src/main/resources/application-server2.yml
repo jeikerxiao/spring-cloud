@@ -1,0 +1,11 @@
+server:
+  port: 8882
+spring:
+  application:
+    name: spring-cloud-eureka
+eureka:
+  instance:
+    hostname: server2
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8881/eureka/,http://127.0.0.1:8883/eureka/
