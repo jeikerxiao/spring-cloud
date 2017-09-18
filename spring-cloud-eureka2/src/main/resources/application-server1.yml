@@ -1,5 +1,5 @@
 server:
-  port: 8880
+  port: 8881
 spring:
   application:
     name: spring-cloud-eureka
@@ -8,4 +8,4 @@ eureka:
     hostname: server1
   client:
     service-url:
-      defaultZone: http://127.0.0.1:8881/eureka/
+      defaultZone: http://127.0.0.1:8882/eureka/
