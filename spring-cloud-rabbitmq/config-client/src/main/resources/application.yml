@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: config-client
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: ***
+    password: 123456
   cloud:
     config:
       label: master
