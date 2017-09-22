@@ -14,19 +14,21 @@ Spring Cloud主要的组件，以及它的访问流程：
 
 ## 服务注册与发现
 
-* spring-cloud-eureka
+* [spring-cloud-eureka](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-eureka)
+* [spring-cloud-eureka2](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-eureka2)
+* [spring-cloud-eureka3](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-eureka3)
 * spring-cloud-consul
 * spring-cloud-zookeeper
 
 ## 服务消费
 
-* spring-cloud-ribbon
-* spring-cloud-feign
+* [spring-cloud-ribbon](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-ribbon)
+* [spring-cloud-feign](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-feign)
 
 ## 断路器
 
-* spring-cloud-ribbon-hystrix
-* spring-cloud-feign-hystrix
+* [spring-cloud-ribbon-hystrix](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-ribbon-hystrix)
+* [spring-cloud-feign-hystrix](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-feign-hystrix)
 
 ## 服务监控
 
@@ -35,12 +37,12 @@ Spring Cloud主要的组件，以及它的访问流程：
 
 ## 服务网关
 
-* spring-cloud-zuul
+* [spring-cloud-zuul](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-zuul)
 
 ## 配置中心
 
-* spring-cloud-config
-* spring-cloud-config-eureka
+* [spring-cloud-config](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-config)
+* [spring-cloud-config-eureka](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-eureka)
 
 ## 消息总线
 
@@ -49,5 +51,4 @@ Spring Cloud主要的组件，以及它的访问流程：
 
 ## 服务跟踪
 
-* spring-cloud-zipkin
-
+* [spring-cloud-zipkin](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-zipkin)
