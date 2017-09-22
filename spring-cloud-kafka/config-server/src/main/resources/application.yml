@@ -13,6 +13,11 @@ spring:
           username:   # 公开仓库可不写用户名和密码，私有仓库需要写
           password:
       label: master
+    stream:
+      kafka:
+        binder:
+          zk-nodes: 192.178.235.32:2181
+          brokers: 192.178.235.32:9092
 
 eureka:
   client:

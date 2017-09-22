@@ -11,6 +11,15 @@ spring:
       discovery:
         enabled: true
         service-id: config-server
+    stream:
+      kafka:
+        binder:
+          zk-nodes: 192.178.235.32:2181
+          brokers: 192.178.235.32:9092
+    bus:
+      trace:
+        enabled: true
+
 eureka:
   client:
     service-url:
