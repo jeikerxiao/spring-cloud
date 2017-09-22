@@ -27,8 +27,8 @@ Spring Cloud主要的组件，以及它的访问流程：
 
 ## 断路器
 
-* [spring-cloud-ribbon-hystrix](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-ribbon-hystrix)
-* [spring-cloud-feign-hystrix](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-feign-hystrix)
+* [spring-cloud-ribbon-hystrix](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-ribbon-hystrix)
+* [spring-cloud-feign-hystrix](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-feign-hystrix)
 
 ## 服务监控
 
