@@ -1,0 +1,29 @@
+SELECT u.id u_id, u.user_code, u.user_source,u.phone, u.nick_name, u.age, u.sex, u.weight, u.height, u.health_condition, u.birthday, u.diagnosis_date, u.address, u.is_signed, u.signed_time, GROUP_CONCAT(DISTINCT dc_c.sn) sn, GROUP_CONCAT(DISTINCT IFNULL(dc_c.cu_code,c.customer_code)) customer_code, GROUP_CONCAT(DISTINCT IFNULL(dc_c.customer_name,c.customer_name)) customer_name, abnormal_count, test_count FROM scw_user u LEFT JOIN ( SELECT c.customer_name,dc.sn,dc.user_code,dc.customer_code as cu_code FROM scb_device_customer dc INNER JOIN snc_customer c ON dc.customer_code=c.customer_code WHERE dc.customer_code LIKE CONCAT(?,'%') )dc_c ON u.user_code = dc_c.user_code LEFT JOIN snc_customer c ON u.customer_code = c.customer_code LEFT JOIN (SELECT SUM(amount_h + amount_l) abnormal_count, SUM(amount_h + amount_l + amount_n) test_count, user_code FROM snc_glucose_exception WHERE 1=1 and day>=? and day<=? GROUP BY user_code) ge ON u.user_code=ge.user_code WHERE 1=1 and u.user_source=? and u.is_signed='1' GROUP BY u.user_code order by u.signed_time desc limit ? offset ? 
+
+
+Parameters: null, 2017-09-12(String), 2017-09-19(String), 1(Byte), 20(Integer), 0(Integer)
+
+
+input {
+    file {
+        path => "/usr/software/nginx/logs/*.log"
+        start_position => beginning
+    }
+}
+filter {
+    grok {
+        match => { "message" => "%{COMBINEDAPACHELOG} %{QS:x_forwarded_for}"}
+    }
+    date {
+        match => [ "timestamp" , "dd/MMM/YYYY:HH:mm:ss Z" ]
+    }
+    geoip {
+        source => "clientip"
+    }
+}
+output {
+    elasticsearch { 
+    hosts => "192.168.235.32:9200" 
+    }
+    stdout { codec => rubydebug }
+}
