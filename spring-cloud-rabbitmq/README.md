@@ -161,7 +161,9 @@ config-client启动两个实例：
 ![image](../images/config-server1.png)
 
 
-请求config-server 发送配置刷新指令：
+请求config-server 发送配置刷新指令,刷新所有客户端配置：
+
+* http://localhost:8888/bus/refresh
 
 ![image](../images/config-server2.png)
 

@@ -46,8 +46,8 @@ Spring Cloud主要的组件，以及它的访问流程：
 
 ## 消息总线
 
-* spring-cloud-rabbit
-* spring-cloud-kafka
+* [spring-cloud-rabbit](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-rabbitmq)
+* [spring-cloud-kafka](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-kafka)
 
 ## 服务跟踪
 
