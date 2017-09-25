@@ -1,13 +1,13 @@
 server:
-  port: 8882
+  port: 8883
 
 spring:
   application:
     name: config-client
   rabbitmq:
-    host: localhost
+    host: 192.168.235.32
     port: 5672
-    username: ***
+    username: admin
     password: 123456
   cloud:
     config:
