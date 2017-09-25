@@ -13,7 +13,6 @@ import java.util.Map;
  * @Date : 17/8/22 下午3:17
  */
 @RestController
-
 public class HelloController {
 
     @Value("${message}")
@@ -26,5 +25,4 @@ public class HelloController {
         result.put("message", message);
         return result;
     }
-
 }
