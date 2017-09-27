@@ -1,0 +1,11 @@
+server:
+  port: 8881
+spring:
+  application:
+    name: service-app
+  cloud:
+    zookeeper:
+      connect-string: 192.168.235.32:2181
+      discovery:
+        instance-host: localhost
+        instance-port: ${server.port}
