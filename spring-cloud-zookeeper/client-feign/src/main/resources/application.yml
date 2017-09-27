@@ -1,9 +1,8 @@
 server:
-  port: 8884
+  port: 8882
 spring:
   application:
     name: service-fegin
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8881/eureka/
+  cloud:
+    zookeeper:
+      connect-string: 192.168.235.32:2181
