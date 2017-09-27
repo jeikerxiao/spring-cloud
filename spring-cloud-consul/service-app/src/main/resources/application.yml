@@ -1,11 +1,19 @@
 server:
   port: 8881
+
 spring:
   application:
     name: service-app
   cloud:
-    zookeeper:
-      connect-string: 192.168.235.32:2181
+    consul:
+      host: 192.168.235.32
+      port: 8500
+      enabled: true
       discovery:
-        instance-host: localhost
-        instance-port: ${server.port}
+        hostname: 192.168.150.208
+        port: ${server.port}
+        enabled: true
+        service-name: service-app
+        instance-id: service-app1
+        health-check-url: http://192.168.150.208:${server.port}/health
+        health-check-interval: 10s
