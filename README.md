@@ -17,7 +17,7 @@ Spring Cloud主要的组件，以及它的访问流程：
 * [spring-cloud-eureka](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-eureka)
 * [spring-cloud-eureka2](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-eureka2)
 * [spring-cloud-eureka3](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-eureka3)
-* spring-cloud-consul
+* [spring-cloud-consul](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-consul)
 * [spring-cloud-zookeeper](https://github.com/jeikerxiao/SpringCloudStudy/tree/master/spring-cloud-zookeeper)
 
 ## 服务消费
